@@ -1,0 +1,49 @@
+@import '../../sass/abstracts/variables';
+
+.container {
+  width: 327px;
+  height: 360px;
+  background: linear-gradient(to bottom, #232a34, #181e27);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 144px;
+  height: 96px;
+}
+
+.rating {
+  color: $orange;
+  background-color: $dark-blue;
+  padding: 6px 12px;
+  border-radius: 30px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.heading {
+  color: $white;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: $light-grey;
+  margin-left: 24px;
+  margin-right: 24px;
+  text-align: center;
+}

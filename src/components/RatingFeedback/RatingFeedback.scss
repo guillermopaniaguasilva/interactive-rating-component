@@ -1,0 +1,22 @@
+@import '../../sass/abstracts/variables';
+
+.rating-container {
+  width: 327px;
+  height: 360px;
+  background: linear-gradient(to bottom, #232a34, #181e27);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.circle {
+  width: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  background: $dark-blue;
+  margin-left: 24px;
+  margin-top: 24px;
+}
