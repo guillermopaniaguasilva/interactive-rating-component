@@ -1,14 +1,14 @@
-import './RatingFeedback.scss';
+import { Container, Circle, Image } from './styles';
 import RatingForm from '../RatingForm/RatingForm';
 
 const RatingFeedback = () => {
   return (
-    <div className="rating-container">
-      <div className="circle">
-        <img src="/images/icon-star.svg" alt="icon-start" />
-      </div>
+    <Container>
+      <Circle>
+        <Image src="/images/icon-star.svg" alt="icon-start" />
+      </Circle>
       <RatingForm maxScore={5} />
-    </div>
+    </Container>
   );
 };
 

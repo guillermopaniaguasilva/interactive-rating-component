@@ -1,4 +1,3 @@
-import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import RatingFeedback from '../RatingFeedback/RatingFeedback';
 import ThankYou from '../ThankYou/ThankYou';

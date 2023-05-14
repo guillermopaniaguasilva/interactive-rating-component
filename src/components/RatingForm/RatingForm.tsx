@@ -1,8 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import './RatingForm.scss';
 import { FormEvent, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setRating, setMaxScore } from '../../store/rating/rating.action';
+import {
+  Form,
+  Heading,
+  Description,
+  ScoresContainer,
+  Score,
+  Button,
+} from './styles';
 
 type RatingFormProps = {
   maxScore: number;
@@ -21,7 +28,7 @@ const RatingForm = ({ maxScore }: RatingFormProps) => {
   const rating = useSelector((state: AppState) => state.rating.value);
   const dispatch = useDispatch();
 
-  const grades = Array.from({ length: maxScore }, (_, index) => index + 1);
+  const scores = Array.from({ length: maxScore }, (_, index) => index + 1);
 
   useEffect(() => {
     dispatch(setMaxScore(maxScore));
@@ -33,30 +40,28 @@ const RatingForm = ({ maxScore }: RatingFormProps) => {
   };
 
   return (
-    <form className="rating-form" onSubmit={onSubmit}>
-      <p className="rating-form__heading">How did we do?</p>
-      <p className="rating-form__description">
+    <Form onSubmit={onSubmit}>
+      <Heading>How did we do?</Heading>
+      <Description>
         Please let us know how we did with your support request. All feedback is
         appreciated to help us improve our offering!
-      </p>
-      <div className="rating-form__grades-container">
-        {grades.map((number) => (
-          <div
-            key={number}
-            className={`rating-form__grade ${
-              rating === number ? 'selected' : ''
-            }`}
+      </Description>
+      <ScoresContainer>
+        {scores.map((score) => (
+          <Score
+            key={score}
+            selected={rating === score}
             onClick={() => {
               setSelected(!selected);
-              dispatch(setRating(number));
+              dispatch(setRating(score));
             }}
           >
-            {number}
-          </div>
+            {score}
+          </Score>
         ))}
-      </div>
-      <button className="rating-form__submit-btn">Submit</button>
-    </form>
+      </ScoresContainer>
+      <Button>Submit</Button>
+    </Form>
   );
 };
 
