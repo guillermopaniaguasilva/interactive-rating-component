@@ -1,23 +1,35 @@
+import { useDispatch, useSelector } from 'react-redux';
 import './RatingForm.scss';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setRating, setMaxScore } from '../../store/rating/rating.action';
 
 type RatingFormProps = {
   maxScore: number;
 };
 
+export type AppState = {
+  rating: {
+    value: number;
+    maxScore: number;
+  };
+};
+
 const RatingForm = ({ maxScore }: RatingFormProps) => {
-  const [rating, setRating] = useState(0);
   const [selected, setSelected] = useState(false);
   const navigate = useNavigate();
+  const rating = useSelector((state: AppState) => state.rating.value);
+  const dispatch = useDispatch();
 
   const grades = Array.from({ length: maxScore }, (_, index) => index + 1);
 
+  useEffect(() => {
+    dispatch(setMaxScore(maxScore));
+  }, [maxScore, dispatch]);
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    navigate('/thank-you', {
-      state: { rating, grades: grades.length },
-    });
+    navigate('/thank-you');
   };
 
   return (
@@ -36,7 +48,7 @@ const RatingForm = ({ maxScore }: RatingFormProps) => {
             }`}
             onClick={() => {
               setSelected(!selected);
-              setRating(number);
+              dispatch(setRating(number));
             }}
           >
             {number}

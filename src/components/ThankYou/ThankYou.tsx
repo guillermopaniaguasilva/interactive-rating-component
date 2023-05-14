@@ -1,10 +1,9 @@
 import './ThankYou.scss';
-import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { AppState } from '../RatingForm/RatingForm';
 
 const ThankYou = () => {
-  const {
-    state: { rating, grades },
-  } = useLocation();
+  const { value, maxScore } = useSelector((state: AppState) => state.rating);
 
   return (
     <div className="container">
@@ -13,7 +12,7 @@ const ThankYou = () => {
         src="/images/illustration-thank-you.svg"
         alt="thank-you"
       />
-      <p className="rating">{`You selected ${rating} out of ${grades}`}</p>
+      <p className="rating">{`You selected ${value} out of ${maxScore}`}</p>
       <p className="heading">Thank you!</p>
       <p className="description">
         We appreciate you taking the time to give a rating. If you ever need
